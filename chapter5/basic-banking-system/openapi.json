@@ -210,6 +210,74 @@
         }
       }
     },
+    "/api/v1/auth/authenticate": {
+      "get": {
+        "tags": ["Auth"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Load successfully."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Wahyu Widodo"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "wahyu@gmail.com"
+                        },
+                        "password": {
+                          "type": "string",
+                          "example": "$2b$05$J8hagOLf1oIwp8Y8a7m4suAdyVDt3IkozgtPpDTDQd2QVVl59Ma4q"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
 
     "/api/v1/users": {
       "post": {
@@ -908,159 +976,6 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "boolean",
-                      "example": false
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Load successfully."
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "transaction_id": {
-                          "type": "integer",
-                          "example": 1
-                        },
-                        "source_account": {
-                          "type": "integer",
-                          "example": 1
-                        },
-                        "destination_account": {
-                          "type": "integer",
-                          "example": 2
-                        },
-                        "amount": {
-                          "type": "integer",
-                          "example": 100000
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "boolean",
-                      "example": true
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Internal server error."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/authenticate": {
-      "post": {
-        "tags": ["Transactions"],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "source_account_id": {
-                    "type": "integer",
-                    "example": 1
-                  },
-                  "destination_account_id": {
-                    "type": "integer",
-                    "example": 2
-                  },
-                  "amount": {
-                    "type": "integer",
-                    "example": 100000
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "boolean",
-                      "example": false
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Create Transaction Successfully"
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "source_account_id": {
-                          "type": "integer",
-                          "example": 1
-                        },
-                        "destination_account_id": {
-                          "type": "integer",
-                          "example": 2
-                        },
-                        "amount": {
-                          "type": "integer",
-                          "example": 100000
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "boolean",
-                      "example": true
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Internal server error."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "tags": ["Transactions"],
         "responses": {
           "200": {
             "description": "Success",
