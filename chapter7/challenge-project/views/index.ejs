@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chapter 7 Challenge</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to top left, #1841b3, #5c7ec7);
+        }
+
+        h1.title {
+            font-family: sans-serif;
+            font-size: 40px;
+            line-height: 1.3;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Masuk - Chapter 7 Challenge</h1>
+        <form class="bg-light p-4 col-lg-3 col-md-6 mx-auto" method="post" action="/api/v1/login">
+            <div class="mb-2">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <div class="d-grid mt-2">
+                <button class="btn btn-primary" type="submit">Masuk</button>
+            </div>
+            <div class="mt-2">
+                <div class="form-text">
+                    Belum punya akun?
+                    <a href="/registrasi-akun" class="text-decoration-none fw-bold">Registrasi akun</a>
+                </div>
+                <div class="form-text">
+                    Lupa password?
+                    <a href="/ganti-password" class="text-decoration-none fw-bold">Ganti password</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
