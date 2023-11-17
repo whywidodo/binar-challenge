@@ -1,0 +1,349 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Backend Javascript Challenge",
+    "description": "This is doumentation for use Backend Javascript API Challenge (Chapter 6) in Binar Academy",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Books",
+      "description": "Everything about book collection"
+    }
+  ],
+  "paths": {
+    "/books/create": {
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Create book",
+        "description": "This endpoint for create a book collection",
+        "operationId": "createBook",
+        "requestBody": {
+          "description": "Created book object",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/BooksCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooksCreate"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/list": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Show all book collection",
+        "description": "This endpoint for show all book collection",
+        "operationId": "allBooks",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooksAll"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/detail/{bookId}": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Show book detail",
+        "description": "This endpoint for show book detail",
+        "operationId": "detailBook",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "description": "The bookId that needs to be fetched. Use 1 for testing. ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooksDetail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/update/{bookId}": {
+      "put": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Update book",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "updateBook",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "description": "bookId need",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update an existent book in the collection",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BooksUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/books/delete/{bookId}": {
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Delete book collection",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "description": "The bookId that needs to be deleted",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BooksCreate": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "boolean",
+            "example": false
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 201
+          },
+          "message": {
+            "type": "string",
+            "example": "Book successful created"
+          },
+          "data": {
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "judul": {
+                "type": "string",
+                "example": "Malin kundang"
+              },
+              "deskripsi": {
+                "type": "string",
+                "example": "Ini merupakan contoh deskripsi berjudul Malin Kundang"
+              },
+              "image": {
+                "type": "string",
+                "example": "http://linkimage/image-ksoels.png"
+              },
+              "createdAt": {
+                "type": "string",
+                "example": "2023-10-10T04:22:55.706Z"
+              },
+              "updatedAt": {
+                "type": "string",
+                "example": "2023-10-10T04:22:55.706Z"
+              }
+            }
+          }
+        }
+      },
+      "BooksAll": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "boolean",
+            "example": false
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Loaded all book data successful"
+          },
+          "data": {
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "judul": {
+                "type": "string",
+                "example": "Malin Kundang"
+              },
+              "deskripsi": {
+                "type": "string",
+                "example": "Ini adalah contoh deskripsi buku berjudul malin kundang"
+              },
+              "imageUrl": {
+                "type": "string",
+                "example": "http://linkimage/image-ksoels.png"
+              },
+              "createdAt": {
+                "type": "string",
+                "example": "2023-10-10T04:22:55.706Z"
+              },
+              "updatedAt": {
+                "type": "string",
+                "example": "2023-10-10T04:22:55.706Z"
+              }
+            }
+          }
+        }
+      },
+      "BooksDetail": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "boolean",
+            "example": false
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Loaded book successful"
+          },
+          "data": {
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "judul": {
+                "type": "string",
+                "example": "Malin Kundang"
+              },
+              "deskripsi": {
+                "type": "string",
+                "example": "Ini adalah contoh deskripsi buku berjudul malin kundang"
+              },
+              "imageUrl": {
+                "type": "string",
+                "example": "http://linkimage/image-ksoels.png"
+              },
+              "createdAt": {
+                "type": "string",
+                "example": "2023-10-10T04:22:55.706Z"
+              },
+              "updatedAt": {
+                "type": "string",
+                "example": "2023-10-10T04:22:55.706Z"
+              }
+            }
+          }
+        }
+      },
+      "BooksUpdate": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "boolean",
+            "example": false
+          },
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Update book successful"
+          },
+          "data": {
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "judul": {
+                "type": "string",
+                "example": "Malin Kundang"
+              },
+              "deskripsi": {
+                "type": "string",
+                "example": "Ini adalah contoh deskripsi buku berjudul malin kundang"
+              },
+              "imageUrl": {
+                "type": "string",
+                "example": "http://linkimage/image-ksoels.png"
+              },
+              "createdAt": {
+                "type": "string",
+                "example": "2023-10-10T04:22:55.706Z"
+              },
+              "updatedAt": {
+                "type": "string",
+                "example": "2023-10-14T06:20:15.706Z"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
