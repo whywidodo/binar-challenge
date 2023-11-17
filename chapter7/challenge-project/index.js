@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const Sentry = require("@sentry/node");
 const { ProfilingIntegration } = require("@sentry/profiling-node");
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
 
 require("dotenv").config();
 
@@ -38,6 +40,13 @@ app.use(express.json({ strict: false }));
 app.set("views", "./views");
 app.set("view engine", "ejs");
 app.use(router);
+
+io.on("connect", (socket) => {
+  console.log("User connected");
+  socket.on("chat", (data) => {
+    io.socket.emit("chat", data);
+  });
+});
 
 // The error handler must be registered before any other error middleware and after all controllers
 app.use(Sentry.Handlers.errorHandler());

@@ -15,6 +15,10 @@ router.get("/ganti-password", (req, res) => {
   return res.render("forgotPassword");
 });
 
+router.get("/chat", (req, res) => {
+  return res.render("chatRealtime");
+});
+
 router.get("/set-password/:key", async (req, res) => {
   try {
     console.log(req.params.key);
